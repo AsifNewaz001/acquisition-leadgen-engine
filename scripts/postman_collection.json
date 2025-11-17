@@ -1,0 +1,341 @@
+{
+  "info": {
+    "name": "Lead Generation Engine - Live Demo",
+    "description": "AI-powered lead generation and customer acquisition engine",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "leadgen-demo"
+  },
+  "item": [
+    {
+      "name": "Health & Status",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/health",
+              "host": ["{{BASE_URL}}"],
+              "path": ["health"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "API Info",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/",
+              "host": ["{{BASE_URL}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Leads Management",
+      "item": [
+        {
+          "name": "Get All Leads",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/api/v1/leads?skip=0&limit=100",
+              "host": ["{{BASE_URL}}"],
+              "path": ["api", "v1", "leads"],
+              "query": [
+                {"key": "skip", "value": "0"},
+                {"key": "limit", "value": "100"}
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Lead (High Value - CEO)",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"demo.ceo@techcorp.com\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"job_title\": \"CEO\",\n  \"phone\": \"+1-555-0123\",\n  \"source\": \"referral\",\n  \"campaign\": \"Live Demo 2025\",\n  \"linkedin_url\": \"https://linkedin.com/in/johndoe\"\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/api/v1/leads",
+              "host": ["{{BASE_URL}}"],
+              "path": ["api", "v1", "leads"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Lead (Medium Value - Manager)",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"manager@company.com\",\n  \"first_name\": \"Jane\",\n  \"last_name\": \"Smith\",\n  \"job_title\": \"Product Manager\",\n  \"source\": \"website\",\n  \"campaign\": \"Organic Traffic\"\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/api/v1/leads",
+              "host": ["{{BASE_URL}}"],
+              "path": ["api", "v1", "leads"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Lead by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/api/v1/leads/1",
+              "host": ["{{BASE_URL}}"],
+              "path": ["api", "v1", "leads", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Lead",
+          "request": {
+            "method": "PUT",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"contacted\",\n  \"notes\": \"Had a great call. Very interested in the product.\"\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/api/v1/leads/1",
+              "host": ["{{BASE_URL}}"],
+              "path": ["api", "v1", "leads", "1"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Calculate Lead Score",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/api/v1/leads/1/score",
+              "host": ["{{BASE_URL}}"],
+              "path": ["api", "v1", "leads", "1", "score"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Sync to HubSpot",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/api/v1/leads/1/sync/hubspot",
+              "host": ["{{BASE_URL}}"],
+              "path": ["api", "v1", "leads", "1", "sync", "hubspot"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Sync to Salesforce",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/api/v1/leads/1/sync/salesforce",
+              "host": ["{{BASE_URL}}"],
+              "path": ["api", "v1", "leads", "1", "sync", "salesforce"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Data Enrichment",
+      "item": [
+        {
+          "name": "Enrich by Email",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"ceo@apple.com\"\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/api/v1/enrichment/email",
+              "host": ["{{BASE_URL}}"],
+              "path": ["api", "v1", "enrichment", "email"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Enrich by Domain",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"domain\": \"microsoft.com\"\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/api/v1/enrichment/domain",
+              "host": ["{{BASE_URL}}"],
+              "path": ["api", "v1", "enrichment", "domain"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Validate Email",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/api/v1/enrichment/validate-email?email=test@example.com",
+              "host": ["{{BASE_URL}}"],
+              "path": ["api", "v1", "enrichment", "validate-email"],
+              "query": [{"key": "email", "value": "test@example.com"}]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Webhooks",
+      "item": [
+        {
+          "name": "Form Submission",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"contact@business.com\",\n  \"first_name\": \"Michael\",\n  \"last_name\": \"Brown\",\n  \"phone\": \"+1-555-5555\",\n  \"job_title\": \"CTO\",\n  \"form_name\": \"Contact Form\",\n  \"utm_source\": \"google\",\n  \"utm_medium\": \"cpc\",\n  \"utm_campaign\": \"demo-campaign\",\n  \"message\": \"Interested in learning more about your product\"\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/api/v1/webhooks/form-submission",
+              "host": ["{{BASE_URL}}"],
+              "path": ["api", "v1", "webhooks", "form-submission"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Landing Page Conversion",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"landingpage@startup.io\",\n  \"first_name\": \"Sarah\",\n  \"last_name\": \"Davis\",\n  \"page_name\": \"Product Demo Landing Page\",\n  \"utm_source\": \"linkedin\",\n  \"utm_campaign\": \"product-launch\"\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/api/v1/webhooks/landing-page",
+              "host": ["{{BASE_URL}}"],
+              "path": ["api", "v1", "webhooks", "landing-page"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Chat Widget",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"chat@visitor.com\",\n  \"name\": \"Alex\",\n  \"message\": \"Hi, I'd like to know more about pricing\"\n}"
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/api/v1/webhooks/chat-widget",
+              "host": ["{{BASE_URL}}"],
+              "path": ["api", "v1", "webhooks", "chat-widget"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Analytics",
+      "item": [
+        {
+          "name": "Dashboard Stats",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/api/v1/analytics/dashboard?days=30",
+              "host": ["{{BASE_URL}}"],
+              "path": ["api", "v1", "analytics", "dashboard"],
+              "query": [{"key": "days", "value": "30"}]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Conversion Rate",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/api/v1/analytics/conversion-rate",
+              "host": ["{{BASE_URL}}"],
+              "path": ["api", "v1", "analytics", "conversion-rate"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Lead Sources Breakdown",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/api/v1/analytics/lead-sources?days=30",
+              "host": ["{{BASE_URL}}"],
+              "path": ["api", "v1", "analytics", "lead-sources"],
+              "query": [{"key": "days", "value": "30"}]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Top Performing Campaigns",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/api/v1/analytics/top-performing-campaigns?limit=10",
+              "host": ["{{BASE_URL}}"],
+              "path": ["api", "v1", "analytics", "top-performing-campaigns"],
+              "query": [{"key": "limit", "value": "10"}]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "BASE_URL",
+      "value": "https://kacie-marshy-unalleviatingly.ngrok-free.dev",
+      "type": "string"
+    }
+  ]
+}
