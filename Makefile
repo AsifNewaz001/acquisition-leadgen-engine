@@ -14,10 +14,10 @@ install-dev: ## Install development dependencies
 	pip install black flake8 mypy pytest pytest-asyncio pytest-cov
 
 run: ## Run the application
-	uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+	uvicorn app.main:app --reload --host 0.0.0.0 --port 8001
 
 dev: ## Run in development mode with hot reload
-	uvicorn app.main:app --reload --host 0.0.0.0 --port 8000 --log-level debug
+	uvicorn app.main:app --reload --host 0.0.0.0 --port 8001 --log-level debug
 
 test: ## Run tests
 	pytest tests/ -v --cov=app --cov-report=html --cov-report=term
@@ -86,8 +86,8 @@ shell: ## Open Python shell with app context
 	python -i -c "from app.main import app; from app.core.database import engine"
 
 api-docs: ## Open API documentation
-	@echo "Opening API docs at http://localhost:8000/docs"
-	open http://localhost:8000/docs || xdg-open http://localhost:8000/docs
+	@echo "Opening API docs at http://localhost:8001/docs"
+	open http://localhost:8001/docs || xdg-open http://localhost:8001/docs
 
 seed-demo: ## Seed database with demo data
 	python scripts/seed_demo_data.py
@@ -101,7 +101,7 @@ demo-setup: ## Complete demo setup (reset DB + seed data + start server)
 	docker-compose exec -T api python scripts/seed_demo_data.py
 	@echo ""
 	@echo "✅ Demo ready!"
-	@echo "📍 API Docs: http://localhost:8000/docs"
-	@echo "📍 Health: http://localhost:8000/health"
+	@echo "📍 API Docs: http://localhost:8001/docs"
+	@echo "📍 Health: http://localhost:8001/health"
 	@echo ""
-	@echo "🌐 To expose via ngrok, run: ngrok http 8000"
+	@echo "🌐 To expose via ngrok, run: ngrok http 8001"
