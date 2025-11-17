@@ -19,8 +19,9 @@ class Settings(BaseSettings):
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
 
-    # CORS
+    # CORS - Add ngrok URLs or use "*" for demos (set CORS_ALLOW_ALL=true in .env)
     ALLOWED_ORIGINS: List[str] = ["http://localhost:3000", "http://localhost:8000"]
+    CORS_ALLOW_ALL: bool = False  # Set to True for demos/development
 
     # OpenAI
     OPENAI_API_KEY: str = ""

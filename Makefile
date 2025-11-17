@@ -88,3 +88,20 @@ shell: ## Open Python shell with app context
 api-docs: ## Open API documentation
 	@echo "Opening API docs at http://localhost:8000/docs"
 	open http://localhost:8000/docs || xdg-open http://localhost:8000/docs
+
+seed-demo: ## Seed database with demo data
+	python scripts/seed_demo_data.py
+
+demo-setup: ## Complete demo setup (reset DB + seed data + start server)
+	@echo "🚀 Setting up demo environment..."
+	make docker-up
+	@echo "⏳ Waiting for services to start..."
+	sleep 10
+	docker-compose exec -T api alembic upgrade head
+	docker-compose exec -T api python scripts/seed_demo_data.py
+	@echo ""
+	@echo "✅ Demo ready!"
+	@echo "📍 API Docs: http://localhost:8000/docs"
+	@echo "📍 Health: http://localhost:8000/health"
+	@echo ""
+	@echo "🌐 To expose via ngrok, run: ngrok http 8000"
